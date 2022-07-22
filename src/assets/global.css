@@ -1,0 +1,90 @@
+html {
+    font-size:62.5%;
+  }
+  *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  body {
+    background-color:#e9ecef
+  }
+li {
+    list-style: none;
+}
+.section {
+    padding:4rem 0;
+    background-color: #fff;
+}
+.grid {
+    display: grid;
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
+.grid-2-cols {
+    grid-template-columns: repeat(2,1fr);
+}
+.grid-3-cols {
+    grid-template-columns: repeat(3,1fr);
+    /* grid-template-rows:  */
+}
+.grid-4-cols {
+    grid-template-columns: repeat(4,1fr);
+}
+.grid-5-cols {
+    grid-template-columns: repeat(5,1fr);
+}
+.grid-6-cols {
+    grid-template-columns: repeat(6,1fr);
+}
+.bold {
+    font-weight: 500;
+}
+.bold-500 {
+    font-weight: 600;
+}
+.bold-600 {
+    font-weight: 600;
+}
+.col-orange {
+    color:#e67e22
+}
+.col-dark-orange {
+    color:#cf711f;
+}
+.col-grey {
+    color:#333;
+}
+.primary-heading {
+    font-weight: 700;
+    font-size: 5.6rem;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 2.4rem;
+}
+.hero-description {
+    font-size: 2.4rem;
+    margin-bottom: 3.2rem;
+  }
+.section-heading {
+    font-size:4.8rem;
+    font-weight: 700;
+    margin-bottom:4rem;
+}
+.pre-heading-text {
+    color:#cf711f;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+a {
+    color:#333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+a:hover,a:active {
+    color:#de7c26;
+    cursor:pointer;
+}
