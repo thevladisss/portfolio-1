@@ -7,7 +7,6 @@
         {{this.description}}
     </p>
     <ul class="pack-data">
-        <!-- {{this.packData}} -->
         <li class="data-list-item" v-for="item in this.packData" :key="item">
             <ion-icon class="data-icon" name="checkmark-outline"></ion-icon>
             <p class="data-list-item-text">{{item}}</p>
@@ -50,7 +49,7 @@ props: {
         required:false
     },
     discount:{
-        type:String,
+        type:Boolean,
         required:false
     },
     actionText: {

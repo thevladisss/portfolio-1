@@ -1,5 +1,5 @@
 <template>
-  <form action="" class="form-element grid grid-3-cols">
+  <form @submit.prevent="this.SubmitForm(this.formData)"  class="form-element grid grid-3-cols">
         <div class="form-interaction">
             <h3 class="section-heading">
             Get your first meal for free!
@@ -12,19 +12,20 @@
         </p>
         <div class="grid grid-2-cols">
             <div class="form-control">
-                <label for="fullname">Full name</label>
-                <input type="text" name="fullname" id="">
+                <label for="fullName">Full name</label>
+                <input type="text" name="fullName" v-model="this.formData.fullName">
             </div>
             <div class="form-control">
                 <label for="email">Email address</label>
-                <input type="text" name="email" id="">
+                <input type="text" name="email" id="" v-model="this.formData.email">
             </div>
             <div class="form-control">
                 <label for="source">Where did you hear from us?</label>
-                <select name="source" id="">
-                    <option value="">Google</option>
-                    <option value="">Media</option>
-                    <option value="">Ads</option>
+                <select name="source" v-model="this.formData.hearFrom">
+                    <option value="">Select option</option>
+                    <option value="google">Google</option>
+                    <option value="media">Media</option>
+                    <option value="ads">Ads</option>
                 </select>
             </div>
             <the-button>Sign up now!</the-button>
@@ -37,8 +38,18 @@
 </template>
 
 <script>
+import SubmitForm from '@/composable/SubmitForm'
 export default {
-
+data(){
+    return {
+        formData: {
+            email:'',
+            fullName:'',
+            hearFrom:''
+        },
+        SubmitForm
+    }
+}
 }
 </script>
 

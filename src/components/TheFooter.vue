@@ -59,7 +59,8 @@ li {
 }
 .footer {
     border-top:0.5px solid lightgray;
-    font-size:1.4rem
+    font-size:1.4rem;
+    width:100%;
 }
 .footer-logo {
     width:20rem;

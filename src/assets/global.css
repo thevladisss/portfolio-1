@@ -1,3 +1,6 @@
+:root {
+    --animate-duration: 800ms;
+}
 html {
     font-size:62.5%;
   }
@@ -8,7 +11,7 @@ html {
       box-sizing: border-box;
   }
   body {
-    background-color:#e9ecef
+    background-color:#e9ecef;
   }
 li {
     list-style: none;

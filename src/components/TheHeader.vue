@@ -3,7 +3,7 @@
   <the-modal 
     @close-modal="formVisible=false"
     :show="formVisible"
-    title="Input your details"
+    title="Get your first meal right now!"
     :actions="false"
   >
   <the-form @on-submit="SubmitForm"></the-form>

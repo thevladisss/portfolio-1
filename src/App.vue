@@ -1,15 +1,15 @@
 <template>
-<div>
-  <h1>{{deviceType}}</h1>
+<div class="page-layout">
+  <!-- <h1>{{deviceType}}</h1> -->
   <the-header></the-header>
   <router-view v-slot="{ Component }">
     <Transition
-     name="fade"
-     appear
      mode="out-in"
+     enter-active-class="animate__animated animate__fadeIn"
+     leave-active-class="animate__animated animate__fadeOut"
      >
       <keep-alive>
-        <component :is="Component"></component>
+        <component :is="Component" class="page-layout"></component>
       </keep-alive>
     </Transition>
   </router-view>
@@ -45,9 +45,10 @@ export default {
   box-sizing: border-box;
   font-family: "Rubik",sans-serif;
   font-weight: 400;
-  /* font-size:62.5%; */
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.page-layout {
+  min-height: 100vh;
 }
 </style>

@@ -1,25 +1,32 @@
 <template>
-<Teleport to="body">
+<!-- <Teleport to="body"> -->
+    <Transition 
+        mode="out-in"
+        enter-active-class="animate__animated animate__fadeIn"
+        leave-active-class="animate__animated animate__fadeOut"
+        >
     <div v-if="isShown" class="modal-background">
-    <dialog @submit="closeModal" open class="modal-component">
-        <h2 class="modal-title">
-            {{this.title}}
-        </h2>
-        <div class="modal-main">
-             <slot></slot>
-        </div>
-        <slot name="Footer"></slot>
-        <div class="modal-actions" v-if="modalActions">
-            <slot name="actions">
-                <the-button @click="closeModal">Close</the-button>
-            </slot>
-        </div>
-    </dialog>
+            <dialog @submit="closeModal" open class="modal-component">
+                <ion-icon @click="closeModal" name="close-outline" class="close-icon"></ion-icon>
+                <h2 class="modal-title">
+                    {{this.title}}
+                </h2>
+                <div class="modal-main">
+                    <slot></slot>
+                </div>
+                <slot name="Footer"></slot>
+                <div class="modal-actions" v-if="actions">
+                    <slot name="actions">
+                        <the-button @click="closeModal">Close</the-button>
+                    </slot>
+                </div>
+            </dialog>
     </div>
-</Teleport>
+        </Transition>
 </template>
 
 <script>
+// import AnimateElement from '@/composable/AnimateElement'
 import ScrollBehaviour from '@/composable/ScrollBehaviour'
 import { computed,watch } from 'vue'
 export default {
@@ -48,8 +55,8 @@ watch(isShown,v=>{
     }
 })
 const closeModal=()=>{
-    emit('closeModal')
-    ScrollBehaviour(true)
+        emit('closeModal')
+        ScrollBehaviour(true)
 }
     return{isShown,closeModal}
 }
@@ -95,5 +102,16 @@ const closeModal=()=>{
     display: flex;
     justify-content: center;   
     gap:1rem
+}
+.close-icon {
+    position:absolute;
+    width:3rem;
+    height:3rem;
+    right:0;
+    top:0;
+    cursor:pointer;
+}
+.close-icon:hover {
+    background-color: rgba(0,0,0,0.6);
 }
 </style>

@@ -11,7 +11,9 @@
           </p>
           <div class="buttons-block">
             <the-button color="orange">Start eating well!</the-button>
+            <router-link :to="{name:'about'}">
             <the-button color="white">Learn more</the-button>
+            </router-link>
           </div>
           <section class="feedback-block">
             <div class="feedback-photos">

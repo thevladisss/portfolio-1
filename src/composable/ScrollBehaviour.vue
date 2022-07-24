@@ -1,6 +1,5 @@
 <script>
 export default function(val){
-    console.log('woRKS')
     if(val){
         document.body.style.overflowY = 'auto'
         document.documentElement.style.overflowY = 'auto '

@@ -74,7 +74,9 @@ const emitForm = ()=>emit('onSubmit',formData)
     width:100%;
 }
 .form-control input {
-    width:100%
+    width:100%;
+    border-radius: 3px;
+    border-color:rgba(233, 148, 13, 0.84)
 }
 .form-control textarea {
     resize: none;

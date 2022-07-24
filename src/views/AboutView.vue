@@ -1,5 +1,18 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<section class="section section-about">
+    <the-container>
+    <h1 class="">About page</h1>
+  </the-container>
+</section>
 </template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style scoped>
+.about {
+}
+</style>
