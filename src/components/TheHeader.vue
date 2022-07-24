@@ -1,13 +1,21 @@
 <template>
+<div>
+  <the-modal 
+    @close-modal="formVisible=false"
+    :show="formVisible"
+    title="Input your details"
+    :actions="false"
+  >
+  <the-form @on-submit="SubmitForm"></the-form>
+  </the-modal>
   <header class="header">
     <img class="header-logo" src="@/assets/img/omnifood-logo.png" alt="">
-<!-- <h1>dsads</h1> -->
     <nav class="header-nav">
         <router-link :to="{name:'home'}">Home</router-link>
         <router-link :to="{name:'about'}">About</router-link>
         <router-link :to="'/'">Testimonials</router-link>
         <router-link :to="'/'">Pricing</router-link>
-        <the-button color="orange" @btn-click="doAlert">Try for free</the-button>
+        <the-button color="orange" @btn-click="showForm">Try for free</the-button>
     </nav>
     <nav class="mobile-header">
         <ion-icon 
@@ -17,31 +25,36 @@
         v-if="!navActive"
         ></ion-icon>
         <transition name="mobile-nav-anim">
-             <mobile-nav @close-nav="navActive=false" v-if="navActive"></mobile-nav>
+             <mobile-nav @show-form="showForm" @close-nav="navActive=false" v-if="navActive"></mobile-nav>
         </transition>
    </nav>
   </header>
+</div>
 </template>
 
 <script>
 import { ref } from 'vue'
 import MobileNav from './mobile/MobileNav'
+import ScrollBehaviour from '@/composable/ScrollBehaviour'
+import SubmitForm from '@/composable/SubmitForm'
 export default {
     components:{
         MobileNav
     },
-    setup(){
-        function doAlert(){
-            alert('Some')
-        }
+setup(){
+    const formVisible = ref(false)
+    function showForm(){
+        formVisible.value = true
+    }
 
 const navActive = ref(false)
 function openMenu(){
-    document.documentElement.style.overflowY = 'hidden'
-    document.body.style.overflowY = 'hidden'
+    ScrollBehaviour(false)
     navActive.value = true
 }
-        return {doAlert,openMenu,navActive}
+
+
+return {SubmitForm,showForm,openMenu,navActive,formVisible}
     }
 }
 </script>

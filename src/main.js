@@ -5,6 +5,7 @@ import store from './store'
 import TheContainer from '@/components/TheContainer'
 import TheButton from '@/components/TheButton'
 import TheModal from '@/components/TheModal'
+import TheForm from '@/components/TheForm'
 const app = createApp(App)
 
 
@@ -15,6 +16,7 @@ app
 .component('TheContainer',TheContainer)
 .component('TheButton',TheButton)
 .component('TheModal',TheModal)
+.component('TheForm',TheForm)
 .use(router)
 .use(store)
 .mount('#app')

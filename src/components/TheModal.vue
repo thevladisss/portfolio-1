@@ -1,23 +1,29 @@
 <template>
 <Teleport to="body">
     <div v-if="isShown" class="modal-background">
-    <dialog open class="modal-component">
+    <dialog @submit="closeModal" open class="modal-component">
         <h2 class="modal-title">
             {{this.title}}
         </h2>
-        <p class="modal-main">
+        <div class="modal-main">
              <slot></slot>
-        </p>
+        </div>
         <slot name="Footer"></slot>
-        <the-button @click="closeModal">Close</the-button>
+        <div class="modal-actions" v-if="modalActions">
+            <slot name="actions">
+                <the-button @click="closeModal">Close</the-button>
+            </slot>
+        </div>
     </dialog>
     </div>
 </Teleport>
 </template>
 
 <script>
+import ScrollBehaviour from '@/composable/ScrollBehaviour'
 import { computed,watch } from 'vue'
 export default {
+emits: ['closeModal'],
 props: {
     show:{
         type:Boolean,
@@ -27,22 +33,25 @@ props: {
     title:{
         type:String,
         required:true
+    },
+    actions: {
+        type:Boolean,
+        default:true,
+        required:false
     }
 },
 setup(props,{emit}){
 const isShown = computed(()=>props.show)
-const openModal=()=>{
-    document.documentElement.style.overflowY ='hidden'
-    document.body.style.overflowY ='hidden'
-    isShown.value = true
-}
-watch(isShown.value,(v)=>{if(v===true)openModal()})
+watch(isShown,v=>{
+    if(v){
+        ScrollBehaviour(false)
+    }
+})
 const closeModal=()=>{
     emit('closeModal')
-    document.documentElement.style.overflowY ='auto'
-    document.body.style.overflowY ='auto'
+    ScrollBehaviour(true)
 }
-    return{isShown,openModal,closeModal}
+    return{isShown,closeModal}
 }
 }
 </script>
@@ -61,10 +70,10 @@ const closeModal=()=>{
 }
 .modal-component {
     position:relative;
-    width:40rem;
-    padding:2.4rem 4rem;
+    width:60rem;
+    padding:2.4rem 5.2rem;
     background-color:#fff;
-    border:3px solid orange;
+    border:10px solid #e67e22;
     border-radius: 12px;
     z-index: 1000;
     right:0;
@@ -78,5 +87,13 @@ const closeModal=()=>{
 .modal-main {
     font-size: 2rem;
     margin-bottom: 2rem;
+    border-top: 0.5px solid rgba(0,0,0,0.6);;
+    border-bottom: 0.5px solid rgba(0,0,0,0.6);
+    padding:1rem 0;
+}
+.modal-actions {
+    display: flex;
+    justify-content: center;   
+    gap:1rem
 }
 </style>

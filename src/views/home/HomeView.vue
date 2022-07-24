@@ -39,10 +39,7 @@ export default {
     SectionForm
   },
   setup(){
-    const show = ref(true)
-    // onMounted(()=>{
-    //   console.log(inject('queries'))
-    // })
+    const show = ref(false)
     return {show}
   }
 }

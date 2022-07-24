@@ -8,21 +8,25 @@
             <router-link :to="{name:'about'}">About</router-link>
             <router-link :to="'/'">Testimonials</router-link>
             <router-link :to="'/'">Pricing</router-link>
-            <the-button color="orange" @btn-click="doAlert">Try for free</the-button>
+            <the-button color="orange" @btn-click="showForm">Try for free</the-button>
         </nav>
   </div>
 </template>
 
 <script>
+import ScrollBehaviour from '@/composable/ScrollBehaviour'
 export default {
 setup(_,{emit}){
     
+    function showForm(){
+        closeMenu()
+        emit('show-form')
+    }
     function closeMenu(){
-        document.documentElement.style.overflowY = 'auto'
-        document.body.style.overflowY = 'auto'
+        ScrollBehaviour(true)
         emit('closeNav')
     }
-    return {closeMenu}
+    return {showForm,closeMenu}
 }
 }
 </script>

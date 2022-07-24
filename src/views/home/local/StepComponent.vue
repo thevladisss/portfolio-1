@@ -1,6 +1,5 @@
 <template>
-<!-- <the-container class="grid grid-2-cols step-container "> -->
-<step-container :class="['grid', 'grid-2-cols','step-container']">  
+<the-container :class="['grid', 'grid-2-cols','step-container']">  
     <section :class="['step-text', this.textReverse]">
         <p  class="step-number" :class="hoverActive?'hoverNum':''">{{this.number}}</p>
         <h4 class="step-heading">{{this.heading}}</h4>
@@ -11,7 +10,7 @@
         <section :class="['step-illustration', this.imgReverse]">
        <img  class="step-img" :src="this.imgSrc" :alt="this.img.alt" @mouseover="this.hoverImage" @mouseout="this.hoverImage">
     </section>
-</step-container>
+</the-container>
 </template>
 
 <script>
@@ -52,7 +51,6 @@ methods:{
 },
     computed: {
         imgSrc(){
-            console.log(this.img.src)
             return require('../../../assets/img/app/'+this.img.src)
         },
         textReverse(){
