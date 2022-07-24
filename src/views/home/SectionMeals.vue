@@ -1,9 +1,12 @@
 <template>
-<section class="section section-meals">
-    <the-container :class="['grid','grid-3-cols']">
-        <!-- <div class="meals-data"> -->
-      <!-- v-for="meal in mealsData" :key="meal.img.alt"> -->
+<section id="meals" class="section section-meals">
+    <the-container :class="['grid','grid-3-cols',showAllMobile]" >
       <div v-for="meal in getMeals" :key="meal.id">
+      <transition
+             mode="out-in"
+     enter-active-class="animate__animated animate__fadeIn"
+     leave-active-class="animate__animated animate__fadeOut"
+      >
         <meal-item
         :id="meal.id"
         :title="meal.title"
@@ -11,12 +14,9 @@
         :img="meal.img"
         :mealData="meal.mealData"
         ></meal-item>
-        <!-- </div> -->
-        <!-- <div class="diet-data">
-            <h1>Data</h1>
-        </div> -->
+    </transition>
         </div>
-        <div class="diet-data">
+        <div class="diet-data" v-if="!showAll">
             <h3 class="diet-heading">Works with any diet</h3>
             <ul class="diet-items">
                 <li  v-for="item in getDietData" :key="item" class="diet-list-item">
@@ -35,93 +35,58 @@
 </template>
 
 <script>
+import {meals_store} from '@/store/meals_store'
 import { ref,computed } from 'vue'
+import MediaQuery from '@/composable/MediaQuery'
 import MealItem from './local/MealItem'
 export default {
     components:{
         MealItem
     },
     setup(){
-        const dietData = ref(
-        [
-            'vegeterian','vegan',
-            'pescatarian','gluten-free',
-            'keto','paleo','low FODMAP',
-            'kid-friendly'
-        ])
+        const mealsStore = meals_store()
+        const mealsData = mealsStore.getMealsData
+        const dietData = mealsStore.getDietData
+        const {deviceType} = MediaQuery()
         const getDietData = computed(()=>{
-            return dietData.value.map(word=>
+            return dietData.map(word=>
             word.replace(/./,x=>x[0].toUpperCase()))
         })
-        const mealsData = ref([
-            {   id:1,
-                title:'Japanese Gyozas',
-                labels:['Vegeterian','Other'],
-                img:{name:'meal-1.jpg',alt:'first'},
-                mealData:{
-                    cal:650,
-                    score:74,
-                    rate:4.9
-                }
-            },
-            {   id:2,
-                title:'Japanese Gyozas',
-                labels:['Vegeterian'],
-                img:{name:'meal-2.jpg',alt:'first'},
-                mealData:{
-                    cal:650,
-                    score:74,
-                    rate:4.9
-                }
-            },
-            {   id:3,
-                title:'Third meal',
-                labels:['Vegeterian'],
-                img:{name:'meal-2.jpg',alt:'first'},
-                mealData:{
-                    cal:650,
-                    score:74,
-                    rate:4.9
-                }
-            },
-            {   id:4,
-                title:'Fourth meal',
-                labels:['Vegeterian','Paleo'],
-                img:{name:'meal-2.jpg',alt:'first'},
-                mealData:{
-                    cal:650,
-                    score:74,
-                    rate:4.9
-                }
-            }
-        ])
-    const showAll = ref(false)
-    const nextMeals = ()=>{
-         if(currentMeals.value[1]===mealsData.value.length-1){
-                currentMeals.value=[0,1]
-            }
-            else currentMeals.value = currentMeals.value.map(x=>x+1)
-
-            console.log(currentMeals.value[0],currentMeals.value[1])
-    }
-    const currentMeals = ref([0,1])
+        const showAll = ref(false)
+        const showAllMobile = computed(()=>{
+        if(deviceType.value ==='phone'&& showAll.value){
+            return 'two-by-two'
+        }
+        else return ''
+             })
+        const currentMeals = ref([0,1])
         const getMeals= computed(()=>{
-            
-            if(!showAll.value){
-            return [
-                mealsData.value[currentMeals.value[0]],
-                mealsData.value[currentMeals.value[1]]
-            ]
+            if(deviceType.value==='phone'){
+                if(!showAll.value){
+                    return [
+                        mealsData[currentMeals.value[0]],
+                        mealsData[currentMeals.value[1]]
+                            ]
+                        }
+                else {
+                    return mealsData
+            }
             }
             else {
-                return mealsData.value
+                if(!showAll.value){
+                    return [
+                        mealsData[currentMeals.value[0]],
+                        mealsData[currentMeals.value[1]]
+                            ]
+                        }
+                else {
+                    return mealsData
+            }
             }
         })
-nextMeals
 
 
-
-        return {getMeals,getDietData,mealsData,showAll}
+        return {getMeals,getDietData,mealsData,showAll,showAllMobile}
     }
 }
 </script>
@@ -173,5 +138,8 @@ nextMeals
 }
 .recipe-link a:hover,.recipe-link:active {
     color:black;
+}
+.two-by-two {
+    grid-template-columns: repeat(2,1fr);
 }
 </style>

@@ -27,12 +27,17 @@
             </li>
         </div>
     </div>
+    <div class="meal-actions">
+        <the-button color="white" @click="this.addProduct">Purchase</the-button>
+    </div>
   </figure>
 </template>
 
 <script>
-
+import TheButton from '../../../components/TheButton.vue'
+import {basket_store} from '@/store/basket_store'
 export default {
+  components: { TheButton },
     props:{
         title:{
             type:String,
@@ -53,12 +58,18 @@ export default {
     },
     data(){
         return {
+            basketData: basket_store(),
             labourColor(label){
                 if(label==='Vegeterian'){
                     return 'label-green'
                 }
                 return 'label-yellow'
             }
+        }
+    },
+    methods: { 
+        addProduct(){
+            this.basketData.submitOrder({title:this.title})
         }
     },
     computed: {
@@ -103,7 +114,7 @@ export default {
     flex-wrap: wrap;
 }
 .label {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     padding:0.8rem 1.6rem;
     border-radius: 20px;
     /* border: 1px solid black; */
@@ -132,6 +143,12 @@ export default {
     height:2rem;
     color:orange;
 }
+.meal-actions {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    padding:1.4rem 1.4rem
+}
 @media (max-width:35em) {
     .meal-title {
         font-size: 2.8rem;
@@ -145,7 +162,7 @@ export default {
     .meal-item {
         position:relative
     }
-    .meal-item::before {
+    /* .meal-item::before {
         content:url('@/assets/vectors/chevron-back-outline.svg');
         position:absolute;
         left:-5rem;
@@ -172,7 +189,7 @@ export default {
         opacity: 0.5;
         z-index: 1;
         color:#333;
-    }
+    } */
     .meal-item::after:active,.meal-item::before:active {
         color:black;
         opacity: 1;

@@ -13,8 +13,8 @@
     <nav class="header-nav">
         <router-link :to="{name:'home'}">Home</router-link>
         <router-link :to="{name:'about'}">About</router-link>
-        <router-link :to="'/'">Testimonials</router-link>
-        <router-link :to="'/'">Pricing</router-link>
+        <router-link :to="{name:'basket'}">Orders</router-link>
+        <router-link :to="{name:'products'}">Products</router-link>
         <the-button color="orange" @btn-click="showForm">Try for free</the-button>
     </nav>
     <nav class="mobile-header">

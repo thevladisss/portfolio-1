@@ -26,39 +26,15 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import {price_store} from '@/store/price_store'
 import PricingItem from './local/PricingItem'
 export default {
 components: {
     PricingItem
 },
 setup(){
-    const offersData = ref([
-        {
-            id:1,
-            title:'Starter',
-            price:399,
-            description:`per month. That's just 13$ per meal`,
-            packData:[
-                '1 meal per day',
-                'order from 11am to 9pm',
-                'delivery is free'
-            ]
-        },
-                {
-            id:2,
-            title:'Complete',
-            price:699,
-            description:`per month. That's just 11$ per meal`,
-            packData:[
-                '1 meal per day',
-                'order 24/7',
-                'delivery is free'
-            ],
-            special:'best value',
-            discount:true
-        }
-    ])
+    const priceStore = price_store()
+    const offersData = priceStore.getOffersData
 
 
 

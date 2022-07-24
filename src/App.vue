@@ -1,12 +1,13 @@
 <template>
 <div class="page-layout">
-  <!-- <h1>{{deviceType}}</h1> -->
+  <OrdersComponent/>
   <the-header></the-header>
   <router-view v-slot="{ Component }">
     <Transition
      mode="out-in"
      enter-active-class="animate__animated animate__fadeIn"
      leave-active-class="animate__animated animate__fadeOut"
+     
      >
       <keep-alive>
         <component :is="Component" class="page-layout"></component>
@@ -18,6 +19,7 @@
 </template> 
 
 <script>
+import OrdersComponent from './components/OrdersComponent'
 import MediaQuery from './composable/MediaQuery'
 import TheHeader from './components/TheHeader'
 import TheFooter from './components/TheFooter'
@@ -26,10 +28,9 @@ export default {
   components:{
     TheHeader,
     TheFooter,
-    // MediaQuery
+    OrdersComponent
   },
   setup(){
-
     const {deviceType,width} = MediaQuery()
     return {deviceType,width}
   }
@@ -50,5 +51,6 @@ export default {
 }
 .page-layout {
   min-height: 100vh;
+  --animate-duration: 200ms
 }
 </style>

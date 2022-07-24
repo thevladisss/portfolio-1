@@ -13,50 +13,16 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+// import { ref } from 'vue'
+import {notes_store} from '@/store/notes_store'
 import NoteItem from './local/NoteItem'
 export default {
 components:{
     NoteItem
 },
 setup(){
-    const notesData=ref([
-        {   id:1,
-            icon:'infinite-outline',
-            title:'Never cook again!',
-            description:`Our subscriptions cover
-            365 days per year, even including major 
-            holidays
-            `
-        },
-                {
-            id:2,
-            icon:'infinite-outline',
-            title:'Never cook again!',
-            description:`Our subscriptions cover
-            365 days per year, even including major 
-            holidays
-            `
-        },
-                {
-            id:3,
-            icon:'infinite-outline',
-            title:'Never cook again!',
-            description:`Our subscriptions cover
-            365 days per year, even including major 
-            holidays
-            `
-        },
-            {
-            id:4,
-            icon:'infinite-outline',
-            title:'Never cook again!',
-            description:`Our subscriptions cover
-            365 days per year, even including major 
-            holidays
-            `
-        }   
-    ])
+    const notesStore = notes_store()
+    const notesData= notesStore.getNotes
 
     return {notesData}
 }

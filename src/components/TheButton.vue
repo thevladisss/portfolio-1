@@ -41,10 +41,10 @@ box-shadow: 7.5px 10px 30px  rgb(51, 51, 51,0.6);
     background-color: #bc6920;
 }
 .button-white {
-background-color:#fff;
+background-color: #d8d3ce;
 color:#333;
 }
 .button-white:hover,.button-white:active {
-    background-color: #d8d3ce;
+    background-color: #aba6a2;
 }
 </style>

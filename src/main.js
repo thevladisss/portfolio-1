@@ -1,13 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { createPinia } from 'pinia'
+// import store from './store/main'
 import TheContainer from '@/components/TheContainer'
 import TheButton from '@/components/TheButton'
 import TheModal from '@/components/TheModal'
 import TheForm from '@/components/TheForm'
 const app = createApp(App)
-
+const store = createPinia()
 
 
 
