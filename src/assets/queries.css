@@ -71,6 +71,9 @@
     .hero-image {
         display: none;
     }
+    .section-basket .grid-3-cols {
+        grid-template-columns: repeat(2,1fr);
+    }
 }
 @media (max-width:35em) {
     html {
@@ -98,7 +101,11 @@
         grid-template-columns: 0.6fr;
         justify-content: center;
     }
-
+    .section-basket .grid-3-cols {
+        grid-template-columns: 0.8fr;
+        justify-content: center;
+        /* grid-template-rows:1fr 1 */
+    }
 }
   /* Tablets below 1000px  */
   

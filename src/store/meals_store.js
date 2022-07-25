@@ -11,7 +11,8 @@ export const meals_store = defineStore('meals_store',{
                     mealData:{
                         cal:650,
                         score:74,
-                        rate:4.9
+                        rate:4.9,
+                        price:99.99
                     }
                 },
                 {   id:2,
@@ -21,7 +22,8 @@ export const meals_store = defineStore('meals_store',{
                     mealData:{
                         cal:650,
                         score:74,
-                        rate:4.9
+                        rate:4.9,
+                        price:99.99
                     }
                 },
                 {   id:3,
@@ -31,7 +33,8 @@ export const meals_store = defineStore('meals_store',{
                     mealData:{
                         cal:650,
                         score:74,
-                        rate:4.9
+                        rate:4.9,
+                        price:95.49
                     }
                 },
                 {   id:4,
@@ -41,7 +44,8 @@ export const meals_store = defineStore('meals_store',{
                     mealData:{
                         cal:650,
                         score:74,
-                        rate:4.9
+                        rate:4.9,
+                        price:89.99
                     }
                 }
             ],  
@@ -62,7 +66,8 @@ export const meals_store = defineStore('meals_store',{
                 mealData:{
                     cal:650,
                     score:74,
-                    rate:4.9
+                    rate:4.9,
+                    price:99.99
                 }
             })
         }
@@ -73,6 +78,15 @@ export const meals_store = defineStore('meals_store',{
         },
         getDietData(state){
             return state.dietData
+        },
+        getOneMeal(state){
+            return (id)=>state.mealsData.find(meal=>meal.id===id)
+        },
+        getMealPrice(state){
+        return (id)=>state.mealsData.find(meal=>meal.id===id).mealData.price
+        },
+        getImg(state){
+            return (id)=>state.mealsData.find(meal=>meal.id===id).img
         }
     }
 })

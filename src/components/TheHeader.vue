@@ -9,7 +9,7 @@
   <the-form @on-submit="SubmitForm"></the-form>
   </the-modal>
   <header class="header">
-    <img class="header-logo" src="@/assets/img/omnifood-logo.png" alt="">
+    <img class="header-logo" src="@/assets/img/omnifood-logo.png" alt="" @click="this.$router.push({name:'home'})">
     <nav class="header-nav">
         <router-link :to="{name:'home'}">Home</router-link>
         <router-link :to="{name:'about'}">About</router-link>

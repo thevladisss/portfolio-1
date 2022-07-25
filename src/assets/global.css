@@ -92,3 +92,9 @@ a:hover,a:active {
     color:#de7c26;
     cursor:pointer;
 }
+.block {
+    display: block;
+}
+.inline-block {
+    display: inline-block;
+}

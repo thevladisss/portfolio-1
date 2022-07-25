@@ -24,7 +24,7 @@ export default {
         }
     },
     computed: {
-        ordersQnt(){return this.basketStore.getTotalOrdersData}
+        ordersQnt(){return this.basketStore.getTotalQnt}
     }
 }
 </script>
@@ -46,12 +46,14 @@ export default {
   align-items: center;
   font-weight: 600;
   font-size: 2rem;
+  color:orange
 }
 .basket-icon:hover,.basket-icon:active  {
-  background-color:rgba(0,0,0,0.5);
+  background-color:rgba(240, 228, 228, 0.5);
   cursor:pointer;
 }
 .orders-active {
+  color:rgb(234, 132, 49);
     background-color:white;
 }
 </style>

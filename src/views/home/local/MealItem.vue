@@ -25,6 +25,10 @@
                  <ion-icon class="meal-icon" name="star-outline"></ion-icon>
                 <p class="third-detail"><span class="bold">{{this.mealData.rate}} </span> rating</p>
             </li>
+            <li class="meal-detail">
+                <ion-icon class="meal-icon" name="pricetag-outline"></ion-icon>
+                <p class="fourth-detail"><span class="bold">${{this.mealData.price}}</span></p>
+            </li>
         </div>
     </div>
     <div class="meal-actions">
@@ -39,6 +43,10 @@ import {basket_store} from '@/store/basket_store'
 export default {
   components: { TheButton },
     props:{
+        id:{
+            type:Number,
+            required:true
+        },
         title:{
             type:String,
             required:true
@@ -69,7 +77,7 @@ export default {
     },
     methods: { 
         addProduct(){
-            this.basketData.submitOrder({title:this.title})
+            this.basketData.addOrder({title:this.title,id:this.id})
         }
     },
     computed: {

@@ -5,8 +5,8 @@
                 <slot name="email-text">
                     Your email
                 </slot>
-            </label>
-            <input type="email" name="email" id="" v-model="formData.email">
+            </label> 
+            <input type="mail" name="email" v-model="formData.email">
         </div>
         <div class="form-control">
             <label for="fullnName">
@@ -29,20 +29,25 @@
             <textarea name="" id="" cols="30" 
             rows="10" v-model="formData.details"></textarea>
         </div>
-        <div class="form-action">
+        <div class="form-action" v-if="this.actions">
             <the-button>Submit</the-button>
         </div>
   </form>
 </template>
 <script>
-import { reactive } from 'vue'
+import { reactive,watch } from 'vue'
 export default {
-emits:['onSubmit'],
+emits:['onSubmit','formChange'],
 props: {
     textarea:{
         type:Boolean,
         required:false,
         default:false
+    },
+    actions: {
+        type:Boolean,
+        required:false,
+        default:true
     }
 },
 setup(_,{emit}){
@@ -52,9 +57,10 @@ const formData = reactive({
     number:null,
     details:''
 }) 
+watch(formData,values=>{emit('formChange',values)})
 const emitForm = ()=>emit('onSubmit',formData) 
-    return {formData,emitForm,}
-}
+    return {formData,emitForm}
+    }
 }
 </script>
 
@@ -75,8 +81,9 @@ const emitForm = ()=>emit('onSubmit',formData)
 }
 .form-control input {
     width:100%;
-    border-radius: 3px;
-    border-color:rgba(233, 148, 13, 0.84)
+    border-radius: 6px;
+    height: 2.6rem;
+    /* border-color:rgba(233, 148, 13, 0.84) */
 }
 .form-control textarea {
     resize: none;
@@ -86,5 +93,14 @@ const emitForm = ()=>emit('onSubmit',formData)
     margin-top:1.4rem;
     display:flex;
     justify-content: center;
+}
+@media (max-width:35em) {
+    .form {
+        font-size: 2.4rem;
+    }
+    .form-control input{
+        height:2.8rem;
+    }
+    
 }
 </style>
