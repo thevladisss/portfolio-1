@@ -74,7 +74,10 @@ computed:{
     }
 },
 methods:{
-    writeDetails(v){this.orderData.orderer=v},
+    log:(v)=>console.log(v),
+    writeDetails(v){
+        console.log('received',v)
+        this.orderData.orderer=v},
     resetOrders(){
         // basket_store.$reset
     },

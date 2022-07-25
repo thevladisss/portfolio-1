@@ -11,9 +11,11 @@
     "animate.css": "^4.1.1",
     "core-js": "^3.8.3",
     "pinia": "^2.0.16",
+    "vee-validate": "^4.6.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
