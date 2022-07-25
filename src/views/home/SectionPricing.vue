@@ -26,15 +26,15 @@
 </template>
 
 <script>
-import {price_store} from '@/store/price_store'
+import {components_store} from '@/store/components_store'
 import PricingItem from './local/PricingItem'
 export default {
 components: {
     PricingItem
 },
 setup(){
-    const priceStore = price_store()
-    const offersData = priceStore.getOffersData
+    const componentsStore = components_store()
+    const offersData = componentsStore.getOffersData
 
 
 

@@ -73,7 +73,7 @@ methods:{
 .step-number {
     font-weight: 800;
     font-size: 5.8rem;
-    color:rgb(188, 184, 184);
+    color:#adb5bd;
     filter: grayscale(80%);
     margin-bottom:1rem;
 }
@@ -104,13 +104,6 @@ methods:{
     z-index: -1;
     position:absolute;
     content: '';
-    /* padding:30rem; */
-    /* height:30rem; */
-    /* max-width:30rem; */
-    /* width:50%;
-    height:70%; */
-    /* width: 55%;
-    height: 55%; */
     height:55%;
     width:50%;
     background-color: #ffe8cc;
@@ -129,7 +122,7 @@ methods:{
     grid-row:1;   
 }
 .hoverNum {
-    color:orange;
+    color:#ff922b;
     filter:none
 }
 </style>>

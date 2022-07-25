@@ -75,6 +75,7 @@
         grid-template-columns: repeat(2,1fr);
     }
 }
+/* Devices below 550px */
 @media (max-width:35em) {
     html {
         font-size: 42.5%;
@@ -104,98 +105,5 @@
     .section-basket .grid-3-cols {
         grid-template-columns: 0.8fr;
         justify-content: center;
-        /* grid-template-rows:1fr 1 */
     }
 }
-  /* Tablets below 1000px  */
-  
-  /* @media (max-width:62.5em){
-    html {
-    }
-    .section-heading {
-        font-size: 4.2rem;
-    }
-    .section-testimonials {
-
-    }
-    .section-testimonials img {
-    }
-    .section-testimonials .grid-2-cols {
-        grid-template-columns: 1fr;
-    }
-    .section-testimonials .testimonials-container {
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-    }
-    .section-meals .grid-3-cols {
-    }
-    .diet-data {
-    }
-    .meal-item {
-        background-color: black;
-    }
-    .form-element {
-        grid-template-columns: repeat(2,1fr);
-    }
-    .form-img {
-        display: none;
-    }
-    .section-notes .grid-4-cols {
-        grid-template-columns: repeat(2,1fr);
-    }
-    .grid-6-cols {
-        grid-template-columns: repeat(3,1fr);
-        grid-template-rows: 1fr 1fr;
-        justify-items: center;
-    }
-  } */
-
-
-
-
-  /* Smaller tablets: below 900px*/
-  /* @media (max-width:56em){
-    html {
-        font-size: 50%;
-    }
-    .hero-image {
-        display: flex;
-        align-items: center;
-    }
-  } */
-
-
-
-  /* Devices below 700px */
-  /* @media (max-width:45em){
-    html {
-        font-size: 45%;
-    }
-    .section-heading {
-        font-size: 4.6rem;
-    }
-    .grid-2-cols {
-        grid-template-columns: 1fr;
-    }
-    .grid-3-cols {
-        grid-template-columns: repeat(2,1fr );
-    }
-    .section-testimonials .grid-2-cols {
-        grid-template-columns: 1fr;
-    }
-  } */
-
-  /* @media (max-width:30em){
-    .section-heading {
-        font-size: 3rem;
-    }
-    .pre-heading-text {
-        font-size: 1.8rem;
-    }
-    .grid-3-cols:not(.section-gallery) {
-        grid-template-columns: 1fr;
-    }
-    .section-gallery .grid-3-cols {
-        grid-template-columns: repeat(2,1fr);
-    }
-  } */

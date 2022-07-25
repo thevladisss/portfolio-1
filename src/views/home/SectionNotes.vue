@@ -13,16 +13,16 @@
 </template>
 
 <script>
-// import { ref } from 'vue'
-import {notes_store} from '@/store/notes_store'
+import { computed } from 'vue'
+import {components_store} from '@/store/components_store'
 import NoteItem from './local/NoteItem'
 export default {
 components:{
     NoteItem
 },
 setup(){
-    const notesStore = notes_store()
-    const notesData= notesStore.getNotes
+    const componentStore = components_store()
+    const notesData= computed(()=>componentStore.getNotesData)
 
     return {notesData}
 }

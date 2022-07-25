@@ -33,18 +33,18 @@ button:hover,.button:active {
     cursor: pointer;
 }
 .button-orange {
-background-color:#de7c26;
+background-color:#ff922b;
 color:#fff;
 box-shadow: 7.5px 10px 30px  rgb(51, 51, 51,0.6);
 }
 .button-orange:hover,.button-orange:active {
-    background-color: #bc6920;
+    background-color: #f27600
 }
 .button-white {
-background-color: #d8d3ce;
-color:#333;
+background-color: #d6d9dc;
+color:  #495057;
 }
 .button-white:hover,.button-white:active {
-    background-color: #aba6a2;
+    background-color: #f8f9fa
 }
 </style>

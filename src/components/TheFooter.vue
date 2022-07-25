@@ -78,7 +78,7 @@ li {
 .social-icon {
     width:2rem;
     height:2rem;
-    color:gray
+    color:#868e96;
 }
 
 .footer-section ul {

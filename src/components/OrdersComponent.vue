@@ -46,10 +46,10 @@ export default {
   align-items: center;
   font-weight: 600;
   font-size: 2rem;
-  color:orange
+  color:#ff922b
 }
 .basket-icon:hover,.basket-icon:active  {
-  background-color:rgba(240, 228, 228, 0.5);
+  background-color:rgb(134, 142, 150,0.5);
   cursor:pointer;
 }
 .orders-active {

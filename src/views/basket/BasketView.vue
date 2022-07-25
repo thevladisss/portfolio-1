@@ -1,7 +1,7 @@
 <template>
     <section class="section section-basket">
         <the-container class="grid grid-3-cols" style="color:gray">
-            <div class="orders-section grid grid-2-cols">
+            <div class="orders-section grid grid-2-cols" v-if="this.totalOrders.length>0">
                 <order-item
                 v-for="meal in this.totalOrders"
                 :key="meal.id"
@@ -11,8 +11,15 @@
                 :qnt="meal.quantity"
                 ></order-item>
             </div>
+            <div class="empty-orders-section" v-else>
+                <h1>No orders yet</h1>
+            </div>
             <div class="purchase-section">
-                <the-form :actions="false" @form-change="this.writeDetails"></the-form>
+                <the-form 
+                :actions="false"
+                :keep="true"
+                 @form-change="this.writeDetails"
+                 ></the-form>
                 <div class="orders-list">
                     <h4 class="list-title">Ordered items:</h4>
                     <p class="order"  
@@ -132,7 +139,15 @@ methods:{
     font-size: 2rem;
     text-align: center;
 }
+.empty-orders-section {
+    grid-column: 1;
+    font-size: 2rem;
+    font-weight: 600;
+}
 @media (max-width:47.5em){
+    .empty-orders-section {
+        text-align: center;
+    }
     .orders-section {
         grid-template-columns: 1fr;
         grid-column: 1;

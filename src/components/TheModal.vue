@@ -80,7 +80,6 @@ const closeModal=()=>{
     width:60rem;
     padding:2.4rem 5.2rem;
     background-color:#fff;
-    border:10px solid #e67e22;
     border-radius: 12px;
     z-index: 1000;
     right:0;

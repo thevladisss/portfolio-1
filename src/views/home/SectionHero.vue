@@ -50,10 +50,7 @@ export default {
     background-color: #faf1e9;;
 }
 .hero-container {
-  /* display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap:2rem; */
+
 }
 .hero-text {
   color:rgb(30, 28, 28);

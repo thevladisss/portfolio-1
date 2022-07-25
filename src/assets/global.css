@@ -1,3 +1,14 @@
+/* Main color: #ff922b */
+/* Light main: #ff9d40 */
+/* Dark main #f27600 */
+
+/* Second color: #adb5bd */
+/* Light second: #f8f9fa */
+/* Dark second: #868e96 */
+
+
+/* Almost white #f8f9fa */
+/* Almost black #495057 */
 :root {
     --animate-duration: 800ms;
 }
@@ -11,7 +22,7 @@ html {
       box-sizing: border-box;
   }
   body {
-    background-color:#e9ecef;
+    background-color:#f8f9fa;
   }
 li {
     list-style: none;
@@ -51,13 +62,13 @@ li {
     font-weight: 600;
 }
 .col-orange {
-    color:#e67e22
+    color:#ff922b
 }
 .col-dark-orange {
-    color:#cf711f;
+    color:#f27600;
 }
 .col-grey {
-    color:#333;
+    color:#868e96;
 }
 .primary-heading {
     font-weight: 700;
@@ -76,7 +87,7 @@ li {
     margin-bottom:4rem;
 }
 .pre-heading-text {
-    color:#cf711f;
+    color: #f27600;
     font-size: 1.8rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -97,4 +108,7 @@ a:hover,a:active {
 }
 .inline-block {
     display: inline-block;
+}
+ion-icon {
+    color:#ff922b
 }

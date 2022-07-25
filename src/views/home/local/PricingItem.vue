@@ -72,16 +72,15 @@ computed:{
     flex-direction: column;
     text-align: center;
     width: 80%;
-    border:0.5px solid orange;
+    border:0.5px solid  #f27600;
     border-radius: 8px;
     padding:4.8rem 3.2rem;
     position:relative;
-    /* justify-self: end; */
     overflow: hidden;
 }
 .item-title {
     text-transform: uppercase;
-    color:rgb(199, 139, 27);
+    color:#f27600 ;
     font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 2.4rem;
@@ -91,7 +90,6 @@ computed:{
     font-size: 5.2rem;
     display: flex;
     align-items: flex-end;
-    /* justify-self: center; */
     margin:0 auto;
     margin-bottom:2rem;
 }

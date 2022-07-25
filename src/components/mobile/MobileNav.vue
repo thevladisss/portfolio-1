@@ -3,7 +3,7 @@
     <div class="panel">
         <ion-icon @click="closeMenu" class="close-icon" name="close-outline"></ion-icon>
     </div>
-    <nav class="mobile-nav">
+    <nav class="mobile-nav" @click="closeMenu">
             <router-link :to="{name:'home'}">Home</router-link>
             <router-link :to="{name:'about'}">About</router-link>
             <router-link :to="'/'">Testimonials</router-link>
@@ -35,8 +35,7 @@ setup(_,{emit}){
 .mobile-menu {
     height: 100vh;
     width:40rem;
-    background-color: rgba(247, 247, 247, 0.8);
-    /* opacity: 0.9; */
+    background-color: rgb(206, 212, 218,0.8);
     position:absolute;
     right:0;
     top:0;
@@ -50,7 +49,6 @@ setup(_,{emit}){
     flex-direction: row;
     width:100%;
     padding:1rem;
-    /* border-bottom: 0.5px solid orange */
 }
 .close-icon {
     justify-self: flex-end;

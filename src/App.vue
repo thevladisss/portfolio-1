@@ -8,9 +8,9 @@
      enter-active-class="animate__animated animate__fadeIn"
      leave-active-class="animate__animated animate__fadeOut"
     >
-      <keep-alive>
+      <!-- <keep-alive> -->
         <component :is="Component" class="page-layout"></component>
-      </keep-alive>
+      <!-- </keep-alive> -->
     </Transition>
   </router-view>
   <the-footer></the-footer>

@@ -1,4 +1,5 @@
 <template>
+<keep-alive :exclude="this.keep?'':'the-form'">
   <form  class="form" @submit.prevent="emitForm">
         <div class="form-control">
             <label for="email">
@@ -33,10 +34,12 @@
             <the-button>Submit</the-button>
         </div>
   </form>
+</keep-alive>
 </template>
 <script>
 import { reactive,watch } from 'vue'
 export default {
+name:'the-form',
 emits:['onSubmit','formChange'],
 props: {
     textarea:{
@@ -48,6 +51,11 @@ props: {
         type:Boolean,
         required:false,
         default:true
+    },
+    keep:{
+        type:Boolean,
+        required:false,
+        default:false
     }
 },
 setup(_,{emit}){
@@ -83,7 +91,6 @@ const emitForm = ()=>emit('onSubmit',formData)
     width:100%;
     border-radius: 6px;
     height: 2.6rem;
-    /* border-color:rgba(233, 148, 13, 0.84) */
 }
 .form-control textarea {
     resize: none;

@@ -68,7 +68,7 @@ return {SubmitForm,showForm,openMenu,navActive,formVisible}
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    position:sticky;
+    /* position:sticky; */
     top:0;
     z-index: 100;
 }
