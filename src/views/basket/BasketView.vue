@@ -16,11 +16,13 @@
             </div>
             <div class="purchase-section">
                 <the-form 
-                :actions="false"
+                :actions="true"
                 :keep="true"
-                 @form-change="this.writeDetails"
-                 ></the-form>
-                <div class="orders-list">
+                @on-submit="this.submitOrder"
+                 >
+                 <template v-slot:actions>
+                 <div class="form-actions ">
+                  <div class="orders-list">
                     <h4 class="list-title">Ordered items:</h4>
                     <p class="order"  
                     v-for="meal in this.totalOrders"
@@ -34,8 +36,15 @@
                         <p class="bold black">Total:</p>
                         <p>{{this.totalPrice}}</p>
                     </div>
-                    <the-button color="white" @click="this.submitOrder">Order now!</the-button>
+                    <the-button color="white" @click="this.runProp">Order now!</the-button>
                 </div>
+                    <!-- <div style="display:flex; flex-direction:row; gap:2rem">
+                    <div class=""><h1 class="some">some</h1></div>
+                    <the-button>Order</the-button>
+                    </div> -->
+                    </div>
+                 </template>
+                 </the-form>
             </div> 
     </the-container>
     </section>
@@ -49,9 +58,6 @@ components:{OrderItem},
 data(){
     return {
         basketStore:basket_store(),
-        orderData:{
-            orderer:{},
-        }
     }
 },
 computed:{
@@ -66,7 +72,6 @@ computed:{
     },
     getOrderData(){
         return {
-        ...this.orderData,
         orders:this.totalOrders,
         total:this.totalPrice,
         quantity:this.totalQnt
@@ -75,15 +80,16 @@ computed:{
 },
 methods:{
     log:(v)=>console.log(v),
-    writeDetails(v){
-        console.log('received',v)
-        this.orderData.orderer=v},
     resetOrders(){
-        // basket_store.$reset
     },
-    submitOrder(){
-        console.log(this.getOrderData)
-        this.basketStore.$reset()
+    submitOrder(values){
+        const orderDetails = {
+            orderer:values,
+            orders:this.totalOrders,
+            total:this.getTotalPrice,
+            quantity:this.getTotalQnt
+        }
+        console.log(orderDetails)
         }
     }
 }
@@ -102,6 +108,19 @@ methods:{
     gap:1rem;
     /* box-shadow: 1px 5px 30px rgba(0,0,0,0.6); */
     background-color:rgba(241, 236, 236, 0.5);
+    border-radius: 10px;
+}
+/* delete */
+.form-actions { 
+    width:100%;
+    font-size: 1.6rem;
+    /* padding: 1.6rem 2.4rem; */
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    /* box-shadow: 1px 5px 30px rgba(0,0,0,0.6); */
+    /* background-color:rgba(241, 236, 236, 0.5); */
     border-radius: 10px;
 }
 .order-footer {

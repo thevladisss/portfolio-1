@@ -30,9 +30,10 @@
             rows="10" v-model="formData.details"></textarea>
         </div>
         <div class="form-action" v-if="this.actions">
-            <the-button>Submit</the-button>
+            <slot name="actions" >
+                <the-button>Submit</the-button>
+            </slot>
         </div>
-        <!-- {{errors}} -->
   </form>
 </keep-alive>
 </template>
@@ -60,9 +61,9 @@ props: {
         type:Boolean,
         required:false,
         default:false
-    }
+    },
 },
-setup(_,{emit}){
+setup(props,{emit}){
 const formData = reactive({
     email:'',
     fullName:'',
@@ -87,9 +88,11 @@ setErrors({
 })
 
 const onSubmit = handleSubmit(values=>{
-    emit('onSubmit',values)
     console.log(values)
+    emit('onSubmit',values)
 })
+
+
     return {formData,emitForm,onSubmit}
     }
 }

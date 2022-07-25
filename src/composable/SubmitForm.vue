@@ -7,7 +7,7 @@ export default function(data,config=defaultConfig){
         if(typeof data[key] === 'string') data[key]=''
         else data[key]=null
     })
-    console.log(data)
+    console.log(data,'composable')
     config
     return 200
 }
