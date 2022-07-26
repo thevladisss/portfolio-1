@@ -20,5 +20,9 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+###  Project information
+* Projuct runs using such technologies as:
+1. Vue.js (Vue router)
+2. Pinia (State management alternative to VUEX)
+3. Vee-validate (form validation) and Yup (library for validation)
+4. Animate.css (animations library for CSS)

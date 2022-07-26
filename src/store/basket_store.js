@@ -4,8 +4,6 @@ import { meals_store } from "./meals_store";
 export const basket_store = defineStore('basketData',{
     state:()=>{
         return {
-            // totalQnt:0,
-            // totalAmount:0,
             orders:{
                 meals:[]
             },
@@ -37,8 +35,6 @@ export const basket_store = defineStore('basketData',{
             const itemPrice = mealsStore.getMealPrice(id)
             modifiedOrder.quantity=qnt
             modifiedOrder.price=modifiedOrder.quantity*itemPrice
-            // conso
-            // modifiedOrder
         }
     },
     getters: {
