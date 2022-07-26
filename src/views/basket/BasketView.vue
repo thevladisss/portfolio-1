@@ -19,6 +19,7 @@
                 :actions="true"
                 :keep="true"
                 @on-submit="this.submitOrder"
+                @form-valid="isSubmitValid"
                  >
                  <template v-slot:actions>
                  <div class="form-actions ">
@@ -36,12 +37,8 @@
                         <p class="bold black">Total:</p>
                         <p>{{this.totalPrice}}</p>
                     </div>
-                    <the-button color="white" @click="this.runProp">Order now!</the-button>
+                    <the-button :disabled="submissionDisabled">Order now!</the-button>
                 </div>
-                    <!-- <div style="display:flex; flex-direction:row; gap:2rem">
-                    <div class=""><h1 class="some">some</h1></div>
-                    <the-button>Order</the-button>
-                    </div> -->
                     </div>
                  </template>
                  </the-form>
@@ -58,6 +55,7 @@ components:{OrderItem},
 data(){
     return {
         basketStore:basket_store(),
+        submissionDisabled:true,
     }
 },
 computed:{
@@ -79,8 +77,13 @@ computed:{
     }
 },
 methods:{
-    log:(v)=>console.log(v),
+    isSubmitValid(){
+        if(this.totalQnt>0){
+            this.submissionDisabled = false
+        }
+    },
     resetOrders(){
+        this.basketStore.$reset()
     },
     submitOrder(values){
         const orderDetails = {
@@ -89,7 +92,15 @@ methods:{
             total:this.getTotalPrice,
             quantity:this.getTotalQnt
         }
+        this.resetOrders()
         console.log(orderDetails)
+        }
+    },
+    watch:{
+        canSubmit(){
+        if(!this.totalQnt){
+            this.submissionDisabled=true 
+        }
         }
     }
 }

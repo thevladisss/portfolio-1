@@ -1,7 +1,14 @@
 <template>
   <div>
-    <input type="text" v-model="value">
-    <div class="error-msg">
+    <!-- <input type="text" v-model="value"> -->
+    <input 
+    :value="inputValue"
+    :type="type" 
+    :placeholder="placeholder"
+    @input="handleChange"
+    @blur="handeBlur" 
+    :class="validationClass"
+    ><div class="error-msg" v-if="!meta.valid">
         {{errorMessage}}
     </div>
   </div>
@@ -16,15 +23,34 @@ export default {
             type:String,
             required:true
         },
-        validation: {
-            type:Function,
+        type:{
+            type:String,
             required:false,
-        }
+            default:'text'
+        },
+        placeholder:{
+            type:String,
+            required:false,
+            default:''
+        },
+        value:{
+            type:String,
+            default:''
+        },
+        // errorMessage
     },
     setup(props){
         const inputName = computed(()=>props.name)
-        const {value,errorMessage} = useField(inputName)
-        return {value,errorMessage}
+        const {value:inputValue,errorMessage,handleBlur,handleChange,meta } = useField(inputName,{
+            initialValues:props.value
+        })
+        const validationClass = computed(()=>{
+            if(meta.dirty && !meta.valid){
+                return 'input-invalid'
+            }
+            return null
+        })
+        return {inputValue,errorMessage,handleBlur,handleChange,meta,validationClass}
     }
 
 }
@@ -34,9 +60,18 @@ export default {
     input {
         width:100%;
         border-radius: 6px;
-        height: 2.6rem;
+        height: 3rem;
         margin-bottom: 0.5rem;
+        border: 0.5px solid rgba(0,0,0,0.5)
     }
+    input:focus {
+        border-color:orange
+    }
+    .input-invalid {
+        background-color:rgb(248, 91, 91,0.4);
+        border-color:red;
+    }
+
     .error-msg {
         color:red;
         font-size: 1.8rem;

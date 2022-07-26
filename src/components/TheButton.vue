@@ -1,5 +1,8 @@
 <template>
-  <button :class="this.color==='orange'?'button-orange':'button-white'" @click="this.$emit('btnClick')">
+  <button 
+    :class="this.color==='orange'?'button-orange':'button-white'"
+    :disabled="this.disabled" 
+    @click="this.$emit('btnClick')">
     <slot>{{this.title}}</slot>
   </button>
 </template>
@@ -16,6 +19,10 @@ props:{
         type:String,
         required:false,
         default:'orange'
+    },
+    disabled:{
+        type:Boolean,
+        default:false
     }
 },
 }
@@ -39,6 +46,10 @@ box-shadow: 7.5px 10px 30px  rgb(51, 51, 51,0.6);
 }
 .button-orange:hover,.button-orange:active {
     background-color: #f27600
+}
+.button-orange:disabled {
+    background-color:#495057;
+    color:#f8f9fa;
 }
 .button-white {
 background-color: #d6d9dc;

@@ -7,14 +7,24 @@
                     Your email
                 </slot>
             </label> 
-            <text-input name="email"></text-input>
+            <text-input 
+            name="email"
+            placeholder="Your email here..."
+            type="email"
+            value=""
+            ></text-input>
         </div>
         <div class="form-control">
             <label for="fullName">
                 <slot name="fullName">
                     Your full name
                 </slot>
-                <text-input name="fullName"></text-input>
+                <text-input
+                 name="fullName"
+                 placeholder="Your first and last names"
+                 type="text"
+                 value=""
+                 ></text-input>
             </label>
         </div>
         <div class="form-control">
@@ -22,16 +32,21 @@
                 <slot name="number">
                     Your number
                 </slot>
-                <text-input name="number" placeholder="optional..."></text-input>
+                <text-input
+                 name="number"
+                 placeholder="optional..."
+                 type="text"
+                 value=""
+                ></text-input>
             </label>
         </div>
-        <div class="form-control" v-if="this.textarea">
+        <!-- <div class="form-control" v-if="this.textarea">
             <textarea name="" id="" cols="30" 
             rows="10" v-model="formData.details"></textarea>
-        </div>
+        </div> -->
         <div class="form-action" v-if="this.actions">
             <slot name="actions" >
-                <the-button>Submit</the-button>
+                <the-button :disabled="submissionDisabled">{{this.buttonContent}}</the-button>
             </slot>
         </div>
   </form>
@@ -40,11 +55,11 @@
 <script>
 import * as yup from 'yup'
 import {useForm} from 'vee-validate'
-import { reactive,watch } from 'vue'
+import {ref,computed,watch} from 'vue'
 import TextInput from '@/components/TextInput'
 export default {
 name:'the-form',
-emits:['onSubmit','formChange'],
+emits:['onSubmit','formValid'],
 components:{TextInput},
 props: {
     textarea:{
@@ -62,38 +77,36 @@ props: {
         required:false,
         default:false
     },
+    buttonContent:{
+        type:String,
+        required:false,
+        default:'Submit'
+    }
 },
 setup(props,{emit}){
-const formData = reactive({
-    email:'',
-    fullName:'',
-    number:null,
-    details:''
-}) 
-watch(formData,values=>{emit('formChange',values)})
-const emitForm = ()=>emit('onSubmit',formData) 
-
-const formSchema = yup.object({
-    email:yup.string().email().required().max(25).min(6),
-    fullName:yup.string().required().min(6).max(25),
-    number:yup.string().min(6).max(12).optional ()
-    // number:yup.min(6).max(12)
+const formSchema = yup.object().shape({
+    email:yup.string().email().required().label('Email'),
+    fullName:yup.string().required().min(6).label('Full name'),
+    number:yup.number().optional().label('Phone number')
 })
-const {handleSubmit,setErrors} = useForm({
+const {handleSubmit,resetForm,meta} = useForm({
     validationSchema:formSchema,
     })
-setErrors({
-    email:'Email field is invalid',
-    fullName:'This field is invalid'
-})
-
+ watch(meta,
+ function(val){
+        if(val.dirty && val.valid){
+            submissionRef.value=false
+            emit('formValid')
+        }
+        else submissionRef.value=true
+    },{deep:true})
 const onSubmit = handleSubmit(values=>{
-    console.log(values)
     emit('onSubmit',values)
+    resetForm()
 })
-
-
-    return {formData,emitForm,onSubmit}
+const submissionRef = ref(true)
+const submissionDisabled = computed(()=>submissionRef.value)
+    return {onSubmit,submissionDisabled}
     }
 }
 </script>
