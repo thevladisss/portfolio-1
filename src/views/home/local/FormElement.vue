@@ -56,7 +56,6 @@ data(){
 <style scoped>
 .form-element {
     width:100%;
-    /* padding:3rem 2.4rem; */
     align-content: center;
     border-radius:8px;
     background-color:#d1915c;

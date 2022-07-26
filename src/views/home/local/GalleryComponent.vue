@@ -28,9 +28,6 @@ computed: {}
 </script>
 
 <style scoped>
-/* .section-gallery {
-
-} */
 .gallery-item {
     width:100%;
     align-self: center;

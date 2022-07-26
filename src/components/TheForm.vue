@@ -19,26 +19,26 @@
                 <slot name="fullName">
                     Your full name
                 </slot>
+            </label>
                 <text-input
                  name="fullName"
                  placeholder="Your first and last names"
                  type="text"
                  value=""
                  ></text-input>
-            </label>
         </div>
         <div class="form-control">
             <label for="number">
                 <slot name="number">
                     Your number
                 </slot>
+            </label>
                 <text-input
                  name="number"
                  placeholder="optional..."
                  type="text"
                  value=""
                 ></text-input>
-            </label>
         </div>
         <!-- <div class="form-control" v-if="this.textarea">
             <textarea name="" id="" cols="30" 
@@ -83,7 +83,7 @@ props: {
         default:'Submit'
     }
 },
-setup(props,{emit}){
+setup(_,{emit}){
 const formSchema = yup.object().shape({
     email:yup.string().email().required().label('Email'),
     fullName:yup.string().required().min(6).label('Full name'),
@@ -125,6 +125,9 @@ const submissionDisabled = computed(()=>submissionRef.value)
     gap:1rem;
     padding:0.2rem 0;
     width:100%;
+}
+.form-control label {
+    font-size: 1.8rem;
 }
 .form-control input {
     width:100%;

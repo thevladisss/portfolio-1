@@ -125,7 +125,6 @@ export default {
     font-size: 1.4rem;
     padding:0.8rem 1.6rem;
     border-radius: 20px;
-    /* border: 1px solid black; */
 }
 .label-green {
     background-color: rgb(100, 187, 91);

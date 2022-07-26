@@ -120,7 +120,7 @@ export default {
 .diet-icon {
     width:3.2rem;
     height: 3.2rem;
-    color:orange;
+    color:var(--main-color)
 }
 .meals-data {
   display: flex;

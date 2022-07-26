@@ -70,7 +70,7 @@ export const meals_store = defineStore('meals_store',{
                     price:99.99
                 }
             })
-        }
+        },
     },
     getters:{
         getMealsData(state){

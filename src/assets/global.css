@@ -10,6 +10,13 @@
 /* Almost white #f8f9fa */
 /* Almost black #495057 */
 :root {
+    --main-color: #ff922b;
+    --main-color-light: #ff9d40;
+    --main-color-dark: #f27600;
+    --second-color:#adb5bd;
+    --second-light:#f8f9fa;
+    --second-dark:#868e96;
+    --section-background:#faf1e9;
     --animate-duration: 800ms;
 }
 html {
@@ -22,7 +29,7 @@ html {
       box-sizing: border-box;
   }
   body {
-    background-color:#f8f9fa;
+    background-color:var(--second-light)
   }
 li {
     list-style: none;
@@ -62,13 +69,13 @@ li {
     font-weight: 600;
 }
 .col-orange {
-    color:#ff922b
+    color:var(--main-color)
 }
 .col-dark-orange {
-    color:#f27600;
+    color:var(--main-color-dark)
 }
 .col-grey {
-    color:#868e96;
+    color: var(--second-dark)
 }
 .primary-heading {
     font-weight: 700;
@@ -87,7 +94,7 @@ li {
     margin-bottom:4rem;
 }
 .pre-heading-text {
-    color: #f27600;
+    color: var(--main-color-dark);
     font-size: 1.8rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -100,7 +107,7 @@ a {
     font-size: 1.8rem;
 }
 a:hover,a:active {
-    color:#de7c26;
+    color:var(--main-color);
     cursor:pointer;
 }
 .block {
@@ -110,5 +117,5 @@ a:hover,a:active {
     display: inline-block;
 }
 ion-icon {
-    color:#ff922b
+    color:var(--main-color)
 }

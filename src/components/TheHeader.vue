@@ -61,14 +61,12 @@ return {SubmitForm,showForm,openMenu,navActive,formVisible}
 
 <style scoped>
 .header {
-    /* height: 9.5rem; */
     background-color: #faf1e9;
     display: flex;
     padding:2rem 7rem;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    /* position:sticky; */
     top:0;
     z-index: 100;
 }
@@ -77,7 +75,6 @@ return {SubmitForm,showForm,openMenu,navActive,formVisible}
     height:3rem;
     width:auto;
     margin-right: 2rem;
-    /* justify-self: flex-end */
 }
 
 .header-nav {
@@ -96,7 +93,6 @@ return {SubmitForm,showForm,openMenu,navActive,formVisible}
     }
     .mobile-header {
         display: flex;
-        /* padding:1.2rem 2.4rem */
     }
     .header-nav {
         gap:2rem
@@ -113,7 +109,6 @@ return {SubmitForm,showForm,openMenu,navActive,formVisible}
     }
     .mobile-header {
         display: flex;
-        /* padding:0 */
     }
     .header-nav {
         gap:2rem
@@ -121,7 +116,6 @@ return {SubmitForm,showForm,openMenu,navActive,formVisible}
     .burger-icon {
         width:4rem;
         height: 4rem;
-        /* padding:0; */
         cursor:pointer
     }
     .mobile-menu {

@@ -85,7 +85,6 @@ export default {
 .feedback-block {
   margin-top:3rem;
   display: flex;
-  /* gap:1rem; */
   justify-content: space-around;
 }
 .feedback-photos {
@@ -95,7 +94,7 @@ export default {
   font-size: 1.8rem
 }
 .text-orange {
-  color:rgba(219, 140, 23, 0.823);
+  color:var(--main-color-dark);
   font-weight:700;
 }
 .customer-img {

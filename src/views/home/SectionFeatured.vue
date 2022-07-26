@@ -23,17 +23,13 @@ export default {
 </script>
 
 <style scoped>
-.section-featured {
-    /* padding:4rem 0; */
-}
+.section-featured {}
 .featured-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap:3rem;
-    /* padding:4.8rem 5rem; */
     color:#fff;
-    /* align-content: center; */
 }
 .grayscale {
     filter:grayscale(90%);

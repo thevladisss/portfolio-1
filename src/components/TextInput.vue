@@ -65,7 +65,7 @@ export default {
         border: 0.5px solid rgba(0,0,0,0.5)
     }
     input:focus {
-        border-color:orange
+        /* border-color:orange */
     }
     .input-invalid {
         background-color:rgb(248, 91, 91,0.4);

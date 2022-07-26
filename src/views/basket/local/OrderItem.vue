@@ -6,7 +6,10 @@
         <div class="order-details">
             <li class="order-detail">
                <p class="item-qnt">Quantity:</p>
-               <input type="number" name="" :value="this.qnt">
+               <input 
+               @input="this.increaseQnt" 
+               type="number"
+               :value="this.qnt">
             </li>
             <li class="order-detail">
                <p class="item-price">Price:</p>
@@ -18,6 +21,7 @@
 </template>
 
 <script>
+import { basket_store } from '@/store/basket_store'
 import {meals_store} from '@/store/meals_store'
 export default {
     props:{
@@ -41,7 +45,13 @@ export default {
     },
     data(){
         return {
+            basketStore:basket_store(),
             mealsStore:meals_store()
+        }
+    },
+    methods: {
+        increaseQnt({data:qnt}){
+            this.basketStore.increaseQuantity(this.id,Number(qnt))
         }
     },
     computed:{

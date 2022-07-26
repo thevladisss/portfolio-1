@@ -71,9 +71,9 @@ computed:{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 80%;
+    width: 70%;
     border:0.5px solid  #f27600;
-    border-radius: 8px;
+    border-radius: 10px;
     padding:4.8rem 3.2rem;
     position:relative;
     overflow: hidden;

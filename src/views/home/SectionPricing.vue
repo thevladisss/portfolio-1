@@ -46,11 +46,9 @@ setup(){
 <style scoped>
 .section-pricing {
     color:#333;
-    /* padding:4rem 0 4.6rem 0; */
-    background-color: #fff;
 }
 .orange-text {
-    color:orange;
+    color:var(--main-color);
     text-transform: uppercase;
     font-size: 1.4rem;
     display: inline-block;

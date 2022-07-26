@@ -20,14 +20,15 @@
             </div>
             <gallery-component
             style="align-self:end"
-            :imgData="imagesData"
+            :imgData="testiomonialsImages"
             ></gallery-component>
         </the-container>
   </section>
 </template>
 
 <script>
-import { ref,computed} from 'vue'
+import { components_store } from '@/store/components_store'
+import { computed} from 'vue'
 import TestimonialItem from './local/TestimonialItem'
 import GalleryComponent from './local/GalleryComponent'
 export default {
@@ -36,83 +37,10 @@ components: {
     GalleryComponent
 },
 setup(){
-const testimonialsData = ref(
-    [
-        {
-        id:1,
-        img:{src:'dave.jpg',alt:'Dave'},
-        comment:
-            `Lorem ipsum dolor sit amet consectetur, 
-            adipisicing elit. Doloremque fugit nostrum 
-            fugiat iure numquam atque! Aperiam ea, architecto 
-            iure, aut ipsam, veritatis vitae a voluptatem 
-            cupiditate natus impedit temporibus earum`,
-        author:'Dave Bryson'
-        },
-        {id:2,
-        img:{src:'ben.jpg',alt:'Ben'},
-        comment:
-            `Lorem ipsum dolor sit amet consectetur, 
-            adipisicing elit. Doloremque fugit nostrum 
-            fugiat iure numquam atque! Aperiam ea, architecto 
-            iure, aut ipsam, veritatis vitae a voluptatem 
-            cupiditate natus impedit temporibus earum`,
-        author:'Ben Hadleyy'
-        },
-        {
-        id:3,
-        img:{src:'steve.jpg',alt:'Dave'},
-        comment:
-            `Lorem ipsum dolor sit amet consectetur, 
-            adipisicing elit. Doloremque fugit nostrum 
-            fugiat iure numquam atque! Aperiam ea, architecto 
-            iure, aut ipsam, veritatis vitae a voluptatem 
-            cupiditate natus impedit temporibus earum`,
-        author:'Steve Miller'
-        },
-        {id:4,
-        img:{src:'hannah.jpg',alt:'Ben'},
-        comment:
-            `Lorem ipsum dolor sit amet consectetur, 
-            adipisicing elit. Doloremque fugit nostrum 
-            fugiat iure numquam atque! Aperiam ea, architecto 
-            iure, aut ipsam, veritatis vitae a voluptatem 
-            cupiditate natus impedit temporibus earum`,
-        author:'Hannah Smith'
-        }
-    ]
-)
-const imagesData = ref([
-    {src:'gallery-1.jpg'},
-    {src:'gallery-2.jpg'},
-    {src:'gallery-3.jpg'},
-    {src:'gallery-4.jpg'},
-    {src:'gallery-5.jpg'},
-    {src:'gallery-6.jpg'},
-    {src:'gallery-7.jpg'},
-    {src:'gallery-8.jpg'},
-    {src:'gallery-9.jpg'},
-    {src:'gallery-10.jpg'},
-    {src:'gallery-11.jpg'},
-    {src:'gallery-12.jpg'}
-])
-
-const getImagesData = computed(()=>{
-    if(windowMatch.value){
-        return imagesData.value.slice(0,9)
-    }
-    else 
-    return imagesData.value
-
-})
-const windowWidth = window.matchMedia("(max-width: 1000px)");
-windowWidth.onchange = ()=>{
-    windowMatch.value=windowWidth.matches
-    console.log(windowMatch.value)
-    }
-const windowMatch = ref(windowWidth.matches)
-
- return {testimonialsData,getImagesData,imagesData}
+const componentsStore = components_store()
+const testimonialsData = computed(()=>componentsStore.getTestimonialsData)
+ const testiomonialsImages = computed(()=>componentsStore.getTestimonialsImg)
+ return {testimonialsData,testiomonialsImages}
 }
 }
 </script>
@@ -120,8 +48,7 @@ const windowMatch = ref(windowWidth.matches)
 <style scoped>
 .section-testimonials {
     color:#333;
-    /* padding:4rem 0 4.6rem 0; */
-    background-color:#faf1e9;;
+    background-color:var(--section-background)
 }
 .first-container {
     display: flex;
@@ -130,17 +57,4 @@ const windowMatch = ref(windowWidth.matches)
 .testimonials-container {
 
 }
-/* .orange-text {
-    color:orange;
-    text-transform: uppercase;
-    font-size: 1.4rem;
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-.testimonials-heading {
-    font-size: 4.2rem;
-    letter-spacing: -0.5px;
-    line-height: 1.2;
-    margin-bottom: 3.2rem;
-} */
 </style>

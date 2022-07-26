@@ -47,7 +47,7 @@ export default {
 <style scoped>
 .section-hero {
     padding: 4rem 0;
-    background-color: #faf1e9;;
+    background-color: var(--section-background)
 }
 .hero-container {
 
@@ -55,11 +55,9 @@ export default {
 .hero-text {
   color:rgb(30, 28, 28);
   width:100%;
-  /* background-color: red; */
 }
 .hero-image {
   width:100%;
-  /* background-color: blue; */
 }
 .hero-image img {
   width: 100%;
@@ -83,56 +81,19 @@ export default {
   font-size: 1.8rem
 }
 .text-orange {
-  color:rgba(219, 140, 23, 0.823);
+  color:var(--main-color-dark);
   font-weight:700;
 }
 .customer-img {
   width:4.6rem;
   height: 4.6rem;
-  /* height:auto; */
   border-radius: 100%;
   margin-right:-1.4rem;
 }
 .customer-img:first-of-type {
   margin-right: none;
 }
-@media (max-width:70em){
-    .primary-heading {
-        /* font-size: 5.2rem; */
-    }
-    .hero-description {
-        /* font-size: 2.6rem; */
-    }
-  }
-/* @media (max-width:62.5em){
-   .primary-heading {
-        font-size: 4.8rem;
-    }
-    .hero-description {
-      font-size:2.4rem
-    }
-} */
-/* @media (max-width:56em){
-  .primary-heading {
-    font-size: 4.2rem;
-  }
-  .hero-description {
-    font-size: 2rem;
-  }
-} */
-/* @media (max-width:45em){
-  .hero-container {
-    display: block;
-  }
-  .hero-text {
-    width:100%
-  }
-     .hero-image {
-        display: none;
-    }
-  .feedback-block {
-    flex-direction: column;
-  }
-} */
+
+
 </style>
 

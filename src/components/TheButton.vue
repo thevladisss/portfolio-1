@@ -40,22 +40,22 @@ button:hover,.button:active {
     cursor: pointer;
 }
 .button-orange {
-background-color:#ff922b;
+background-color:var(--main-color);
 color:#fff;
-box-shadow: 7.5px 10px 30px  rgb(51, 51, 51,0.6);
+box-shadow: 1px 5px 30px  rgb(51, 51, 51,0.6);
 }
 .button-orange:hover,.button-orange:active {
-    background-color: #f27600
+    background-color: var(--main-color-dark)
 }
 .button-orange:disabled {
-    background-color:#495057;
+    background-color:var(--second-dark);
     color:#f8f9fa;
 }
 .button-white {
-background-color: #d6d9dc;
+background-color: var(--second-light);
 color:  #495057;
 }
 .button-white:hover,.button-white:active {
-    background-color: #f8f9fa
+    background-color: #cccfd1
 }
 </style>

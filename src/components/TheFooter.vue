@@ -49,12 +49,8 @@ export default {
 </script>
 
 <style scoped>
-li {
-    /* list-style:disc */
-}
 .footer-section {
     width:100%;
-    /* background-color:red; */
     padding:4rem 0
 }
 .footer {
@@ -78,7 +74,7 @@ li {
 .social-icon {
     width:2rem;
     height:2rem;
-    color:#868e96;
+    color:var(--second-dark)
 }
 
 .footer-section ul {
@@ -92,7 +88,6 @@ li {
     margin-bottom: 1.5rem;
 }
 .copyright {
-    /* justify-self:flex-end; */
     margin-top:4rem
 }
 .a-contact {

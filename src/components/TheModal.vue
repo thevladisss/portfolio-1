@@ -77,7 +77,7 @@ const closeModal=()=>{
 }
 .modal-component {
     position:relative;
-    width:60rem;
+    max-width:60rem;
     padding:2.4rem 5.2rem;
     background-color:#fff;
     border-radius: 12px;
@@ -112,5 +112,10 @@ const closeModal=()=>{
 }
 .close-icon:hover {
     background-color: rgba(0,0,0,0.6);
+}
+@media (max-width:47.5em){
+    .modal-component {
+        max-width:50rem
+    }
 }
 </style>
