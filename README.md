@@ -20,8 +20,8 @@ npm run build
 npm run lint
 ```
 
-###  Project information
-* Projuct runs using such technologies as:
+### Technologies used in the project
+
 1. Vue.js (Vue router)
 2. Pinia (State management alternative to VUEX)
 3. Vee-validate (form validation) and Yup (library for validation)
