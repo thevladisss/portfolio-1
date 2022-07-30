@@ -56,17 +56,14 @@ export default {
 .hero-text {
   color:rgb(30, 28, 28);
   width:50%;
-  /* background-color: red; */
 }
 .hero-image {
   width:50%;
-  /* background-color: blue; */
 }
 .hero-image img {
   width: 100%;
 }
 .primary-heading {
-  /* color:rgb(30, 28, 28); */
   font-weight: 700;
   font-size: 5.8rem;
   letter-spacing: -0.5px;

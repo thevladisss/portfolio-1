@@ -35,7 +35,7 @@
             </label>
                 <text-input
                  name="number"
-                 placeholder="optional..."
+                 placeholder="Your number"
                  type="text"
                  value=""
                 ></text-input>
@@ -87,7 +87,7 @@ setup(_,{emit}){
 const formSchema = yup.object().shape({
     email:yup.string().email().required().label('Email'),
     fullName:yup.string().required().min(6).label('Full name'),
-    number:yup.number().optional().label('Phone number')
+    number:yup.string().required().min(6).label('Phone number')
 })
 const {handleSubmit,resetForm,meta} = useForm({
     validationSchema:formSchema,

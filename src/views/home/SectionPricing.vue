@@ -45,7 +45,7 @@ setup(){
 
 <style scoped>
 .section-pricing {
-    color:#333;
+    color:var(--section-text-color)
 }
 .orange-text {
     color:var(--main-color);

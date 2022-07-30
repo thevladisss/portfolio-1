@@ -47,7 +47,7 @@ const testimonialsData = computed(()=>componentsStore.getTestimonialsData)
 
 <style scoped>
 .section-testimonials {
-    color:#333;
+    color:var(--section-text-color);
     background-color:var(--section-background)
 }
 .first-container {

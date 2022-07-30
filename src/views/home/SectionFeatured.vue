@@ -46,7 +46,6 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     gap:2.6rem;
-    /* padding: 0 */
 }
 .featured-img {
     max-height: 3.2rem;

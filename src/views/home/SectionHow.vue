@@ -37,7 +37,7 @@ return {stepData}
 }
 .section-how {
     /* padding: 4rem 0; */
-    color:#333;
+    color:var(--section-text-color)
 }
 
 </style>

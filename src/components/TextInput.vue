@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <input type="text" v-model="value"> -->
     <input 
     :value="inputValue"
     :type="type" 
@@ -8,7 +7,7 @@
     @input="handleChange"
     @blur="handeBlur" 
     :class="validationClass"
-    ><div class="error-msg" v-if="!meta.valid">
+    ><div class="error-msg" v-if="errorIf">
         {{errorMessage}}
     </div>
   </div>
@@ -50,7 +49,13 @@ export default {
             }
             return null
         })
-        return {inputValue,errorMessage,handleBlur,handleChange,meta,validationClass}
+        const errorIf = computed(()=>{
+            if(meta.dirty && !meta.valid){
+                return true
+            }
+            return false
+        })
+        return {inputValue,errorMessage,handleBlur,handleChange,meta,validationClass,errorIf}
     }
 
 }
@@ -63,9 +68,6 @@ export default {
         height: 3rem;
         margin-bottom: 0.5rem;
         border: 0.5px solid rgba(0,0,0,0.5)
-    }
-    input:focus {
-        /* border-color:orange */
     }
     .input-invalid {
         background-color:rgb(248, 91, 91,0.4);
