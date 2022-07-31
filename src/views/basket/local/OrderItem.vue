@@ -6,10 +6,10 @@
         <div class="order-details">
             <li class="order-detail">
                <p class="item-qnt">Quantity:</p>
-               <input 
-               @input="this.increaseQnt" 
-               type="number"
-               :value="this.qnt">
+               <qnt-editor
+               :value="this.qnt"
+               :item-id="this.id"
+               ></qnt-editor>
             </li>
             <li class="order-detail">
                <p class="item-price">Price:</p>
@@ -21,9 +21,13 @@
 </template>
 
 <script>
+import QntEditor from './QntEditor.vue'
 import { basket_store } from '@/store/basket_store'
 import {meals_store} from '@/store/meals_store'
 export default {
+    components:{
+        QntEditor
+    },
     props:{
         id:{
             type:Number,
@@ -46,19 +50,21 @@ export default {
     data(){
         return {
             basketStore:basket_store(),
-            mealsStore:meals_store()
-        }
-    },
-    methods: {
-        increaseQnt({data:qnt}){
-            this.basketStore.increaseQuantity(this.id,Number(qnt))
+            mealsStore:meals_store(),
         }
     },
     computed:{
         imgSrc(){
             const {name} = this.mealsStore.getImg(this.id)
             return require('@/assets/img/meals/'+name)
-        }
+        },
+    },
+    watch:{
+        // qnt(v){
+        //     if(v===0){
+        //         this.basketStore.removeOrder(this.id)
+        //     }
+        // }
     }
 }
 </script>

@@ -4,15 +4,13 @@ import { meals_store } from "./meals_store";
 export const basket_store = defineStore('basketData',{
     state:()=>{
         return {
-            orders:{
-                meals:[]
-            },
+            orders:[]
         }
     },
     actions:{
         addOrder(data){
             const mealsStore = meals_store()
-            const isSameItem = this.orders.meals
+            const isSameItem = this.orders
             .find(order=>order.title===data.title && order.id===data.id)
             const itemPrice = mealsStore.getMealPrice(data.id)
             if(isSameItem){
@@ -25,31 +23,43 @@ export const basket_store = defineStore('basketData',{
                     quantity:1,
                     price:itemPrice
                 }
-                this.orders.meals.unshift(newOrder)
+                this.orders.unshift(newOrder)
             }
         },
-        increaseQuantity(id,qnt){
+        removeOrder(id){
+            const removedOrder = this.orders.findIndex(order=>order.id===id)
+            this.orders.splice(removedOrder,1)
+        },
+        incrementQnt(id){
             const mealsStore = meals_store()
-            const modifiedOrder = this.orders.meals
+            const modifiedOrder = this.orders
             .find(order=>order.id===id)
             const itemPrice = mealsStore.getMealPrice(id)
-            modifiedOrder.quantity=qnt
+            modifiedOrder.quantity+=1
+            modifiedOrder.price=modifiedOrder.quantity*itemPrice
+        },
+        decrementQnt(id){
+            const mealsStore = meals_store()
+            const modifiedOrder = this.orders
+            .find(order=>order.id===id)
+            const itemPrice = mealsStore.getMealPrice(id)
+            modifiedOrder.quantity-=1
             modifiedOrder.price=modifiedOrder.quantity*itemPrice
         }
     },
     getters: {
         getOrdersData(state){
-            return state.orders.meals.length?
-            state.orders.meals.map(order=>{
+            return state.orders.length?
+            state.orders.map(order=>{
                 order.price= +order.price.toFixed(2)
                 return order
             })
             :
-            state.orders.meals
+            state.orders
         },
         getTotalQnt(state){
-            if(state.orders.meals.length){
-                return state.orders.meals
+            if(state.orders.length){
+                return state.orders
                 .reduce((acc,curr)=>{
                     acc+=curr.quantity
                     return acc
@@ -58,14 +68,17 @@ export const basket_store = defineStore('basketData',{
             else return 0
         },
         getTotalPrice(state){
-            if(state.orders.meals.length){
-                return state.orders.meals
+            if(state.orders.length){
+                return state.orders
                 .reduce((acc,curr)=>{
                     acc+=curr.price
                     return acc
-                },0)
+                },0).toFixed(2)
             }
-            else return null
+            else return 0
+        },
+        getMealQnt(state){
+            return (id)=>state.orders.find(order=>order.id===id).quantity
         }
     }
 })

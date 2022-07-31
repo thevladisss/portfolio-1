@@ -8,7 +8,7 @@
                 :id="meal.id"
                 :title="meal.title"
                 :price="meal.price"
-                :qnt="meal.quantity"
+                :qnt="this.basketStore.getMealQnt(meal.id)"
                 ></order-item>
             </div>
             <div class="empty-orders-section" v-else>
@@ -19,7 +19,7 @@
                 :actions="true"
                 :keep="true"
                 @on-submit="this.submitOrder"
-                @form-valid="isSubmitValid"
+                @form-valid="isFormValid"
                  >
                  <template v-slot:actions>
                  <div class="form-actions ">
@@ -37,7 +37,7 @@
                         <p class="bold black">Total:</p>
                         <p>{{this.totalPrice}}</p>
                     </div>
-                    <the-button :disabled="submissionDisabled">Order now!</the-button>
+                    <the-button :disabled="this.canSubmit">Order now!</the-button>
                 </div>
                     </div>
                  </template>
@@ -74,13 +74,17 @@ computed:{
         total:this.totalPrice,
         quantity:this.totalQnt
         }
+    },
+    canSubmit(){
+        if(!this.submissionDisabled && this.totalQnt>0){ 
+            return false
+        }
+            return true
     }
 },
 methods:{
-    isSubmitValid(){
-        if(this.totalQnt>0){
+    isFormValid(){
             this.submissionDisabled = false
-        }
     },
     resetOrders(){
         this.basketStore.$reset()
@@ -96,13 +100,6 @@ methods:{
         console.log(orderDetails)
         }
     },
-    watch:{
-        canSubmit(){
-        if(!this.totalQnt){
-            this.submissionDisabled=true 
-        }
-        }
-    }
 }
 </script>
 
