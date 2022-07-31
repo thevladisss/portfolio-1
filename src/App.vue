@@ -8,10 +8,15 @@
      enter-active-class="animate__animated animate__fadeIn"
      leave-active-class="animate__animated animate__fadeOut"
     >
-      <!-- <keep-alive> -->
-        <component :is="Component" class="page-layout"></component>
-      <!-- </keep-alive> -->
-    </Transition>
+    <Suspense>
+        <template #default>
+          <component :is="Component" class="page-layout"></component>
+        </template>
+        <template #fallback>
+            ...Loading
+        </template>
+   </Suspense>
+   </Transition>
   </router-view>
   <the-footer></the-footer>
 </div>

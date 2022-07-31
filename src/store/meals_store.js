@@ -16,7 +16,7 @@ export const meals_store = defineStore('meals_store',{
                     }
                 },
                 {   id:2,
-                    title:'Japanese Gyozas',
+                    title:'Salad',
                     labels:['Vegeterian'],
                     img:{name:'meal-2.jpg',alt:'first'},
                     mealData:{
