@@ -40,10 +40,14 @@
                  value=""
                 ></text-input>
         </div>
-        <!-- <div class="form-control" v-if="this.textarea">
-            <textarea name="" id="" cols="30" 
-            rows="10" v-model="formData.details"></textarea>
-        </div> -->
+        <div class="form-control" v-if="this.textarea">
+            <textarea 
+                v-model="textarea_value"
+                name="textarea"
+                cols="30" 
+                rows="10"
+            ></textarea>
+        </div>
         <div class="form-action" v-if="this.actions">
             <slot name="actions" >
                 <the-button :disabled="submissionDisabled">{{this.buttonContent}}</the-button>
@@ -54,7 +58,7 @@
 </template>
 <script>
 import * as yup from 'yup'
-import {useForm} from 'vee-validate'
+import {useForm,useField} from 'vee-validate'
 import {ref,computed,watch} from 'vue'
 import TextInput from '@/components/TextInput'
 export default {
@@ -87,11 +91,13 @@ setup(_,{emit}){
 const formSchema = yup.object().shape({
     email:yup.string().email().required().label('Email'),
     fullName:yup.string().required().min(6).label('Full name'),
-    number:yup.string().required().min(6).label('Phone number')
+    number:yup.string().required().min(6).label('Phone number'),
+    textarea:yup.string().optional()
 })
 const {handleSubmit,resetForm,meta} = useForm({
     validationSchema:formSchema,
     })
+const {value:textarea_value} = useField('textarea')
  watch(meta,
  function(val){
         if(val.dirty && val.valid){
@@ -106,7 +112,8 @@ const onSubmit = handleSubmit(values=>{
 })
 const submissionRef = ref(true)
 const submissionDisabled = computed(()=>submissionRef.value)
-    return {onSubmit,submissionDisabled}
+
+    return {onSubmit,submissionDisabled,textarea_value}
     }
 }
 </script>
@@ -136,13 +143,16 @@ const submissionDisabled = computed(()=>submissionRef.value)
 }
 .form-control textarea {
     resize: none;
-    width:100%
+    border-radius: 10px;
+    width:100%;
+    padding: 5px;
 }
 .form-action {
     margin-top:1.4rem;
     display:flex;
     justify-content: center;
 }
+
 @media (max-width:35em) {
     .form {
         font-size: 2.4rem;

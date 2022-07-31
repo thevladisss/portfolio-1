@@ -6,7 +6,10 @@
     title="Get your first meal right now!"
     :actions="false"
   >
-  <the-form @on-submit="(v)=>{SubmitForm(v);formVisible=false}"></the-form>
+  <the-form 
+  textarea
+  @on-submit="(v)=>{SubmitForm(v);formVisible=false}
+  "></the-form>
   </the-modal>
   <header class="header">
     <img class="header-logo" src="@/assets/img/omnifood-logo.png" alt="" @click="this.$router.push({name:'home'})">
